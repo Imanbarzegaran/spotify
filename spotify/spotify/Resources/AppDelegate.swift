@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         
-        if AuthManager.Shared.isSignedIn {
+        if AuthManager.shared.isSignedIn {
             window.rootViewController = TabBarViewController()
-        }else{
+        } else {
            
             let navVC = UINavigationController(rootViewController: WelcomViewController())
             navVC.navigationBar.prefersLargeTitles = true
@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window.makeKeyAndVisible()
         self.window = window
+        
+        print(AuthManager.shared.signInURL?.absoluteString)
         return true
     }
 

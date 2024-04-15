@@ -7,9 +7,8 @@
 
 import Foundation
 
-
 final class AuthManager {
-    static let Shared = AuthManager()
+    static let shared = AuthManager()
     
     struct Constants {
         static let clientID = "36dca6a57a574d8fbf787c2078af5265"
@@ -19,12 +18,11 @@ final class AuthManager {
     private init() {}
     
     public var signInURL: URL? {
-        let scopes = "user-read-private"
-        let redirectURI = "https://github.com/Imanbarzegaran/spotify.git"
+        let scopes = "user-read-private%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20user-follow-read%20user-library-modify%20user-library-read%20user-read-email"
+        let redirectURI = "https://github.com/Imanbarzegaran"
         let base = "https://accounts.spotify.com/authorize"
         let string = "\(base)?response_type=code&client_id=\(Constants.clientID)&scope=\(scopes)&redirect_uri=\(redirectURI)&show_dialog=TRUE"
-        
-        return URL(string: string)
+       return URL(string: string)
     }
     
     var isSignedIn: Bool {
@@ -39,7 +37,7 @@ final class AuthManager {
         return nil
     }
     
-    private var tokenExpirationdate: Date? {
+    private var tokenExpirationDate: Date? {
         return nil
     }
     
@@ -47,21 +45,25 @@ final class AuthManager {
         return false
     }
     
-    public func exchangeCodeForToken(
-        code: String,
-        completion: @escaping ((Bool) -> Void)
-    ){
-        // get token
-        
-    }
     
-    private func refreshAccessToken() {
-        
-    }
     
-    private func cacheToken(){
-        
-        
-    }
+
+    
+//    public func exchangeCodeForToken(
+//        code: String,
+//        completion: @escaping ((Bool) -> Void)
+//    ){
+//        // get token
+//        
+//    }
+//    
+//    private func refreshAccessToken() {
+//        
+//    }
+//    
+//    private func cacheToken(){
+//        
+//        
+//    }
     
 }
