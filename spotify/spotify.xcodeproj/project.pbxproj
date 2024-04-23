@@ -30,6 +30,8 @@
 		D00A33C42BC6E9E8001F24DE /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A33C32BC6E9E8001F24DE /* Artist.swift */; };
 		D00A33C62BC6EA13001F24DE /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A33C52BC6EA13001F24DE /* UserProfile.swift */; };
 		D00A33C82BC8526E001F24DE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00A33C72BC8526E001F24DE /* Extensions.swift */; };
+		D0774EB62BD0222F00D70D95 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0774EB52BD0222F00D70D95 /* AuthResponse.swift */; };
+		D0774EB82BD7FCC700D70D95 /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0774EB72BD7FCC700D70D95 /* SettingsModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		D00A33C32BC6E9E8001F24DE /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		D00A33C52BC6EA13001F24DE /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		D00A33C72BC8526E001F24DE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D0774EB52BD0222F00D70D95 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		D0774EB72BD7FCC700D70D95 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 				D00A33C12BC6E9C0001F24DE /* AudioTrack.swift */,
 				D00A33C32BC6E9E8001F24DE /* Artist.swift */,
 				D00A33C52BC6EA13001F24DE /* UserProfile.swift */,
+				D0774EB52BD0222F00D70D95 /* AuthResponse.swift */,
+				D0774EB72BD7FCC700D70D95 /* SettingsModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 				D00A33B12BC6E5F9001F24DE /* ProfileViewController.swift in Sources */,
 				D00A338B2BC5A2F3001F24DE /* HomeViewController.swift in Sources */,
 				D00A33BE2BC6E892001F24DE /* HapticsManager.swift in Sources */,
+				D0774EB62BD0222F00D70D95 /* AuthResponse.swift in Sources */,
 				D00A33C22BC6E9C0001F24DE /* AudioTrack.swift in Sources */,
 				D00A33AC2BC6E4F8001F24DE /* WelcomViewController.swift in Sources */,
 				D00A33AA2BC6E4B4001F24DE /* AuthViewController.swift in Sources */,
@@ -268,6 +275,7 @@
 				D00A33C82BC8526E001F24DE /* Extensions.swift in Sources */,
 				D00A33A62BC6E3B4001F24DE /* LibraryViewController.swift in Sources */,
 				D00A33C42BC6E9E8001F24DE /* Artist.swift in Sources */,
+				D0774EB82BD7FCC700D70D95 /* SettingsModels.swift in Sources */,
 				D00A33B52BC6E65B001F24DE /* PlaylistViewController.swift in Sources */,
 				D00A33892BC5A2F3001F24DE /* SceneDelegate.swift in Sources */,
 				D00A33B32BC6E60D001F24DE /* PlayerViewController.swift in Sources */,
