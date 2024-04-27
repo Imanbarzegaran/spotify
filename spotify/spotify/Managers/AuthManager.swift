@@ -9,16 +9,20 @@ import Foundation
 
 final class AuthManager {
     static let shared = AuthManager()
-    private init() {}
+   
     private var refreshingToken: Bool = false
     
     struct Constants {
-        static let clientID = "753997d290a24b809b31c8ffa487efc8"
-        static let clientSecret = "982f8f13853a4d6692dba62a9c3600b5"
+//        static let clientID = "396b46251f344b778b709d4e99fecd7d"
+//        static let clientSecret = "080d7fb22bd84f1fb5090f67465370ca"
+        static let clientID = "cf4075e33d394cefbada9dcfb455869e"
+        static let clientSecret = "b26403f75cf045a886273daa09f5a07e"
         static let tokenAPIURL = "https://accounts.spotify.com/api/token"
         static let redirectURI = "https://www.iosacademy.io"
         static let scopes = "user-read-private%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20user-follow-read%20user-library-modify%20user-library-read%20user-read-email"
     }
+    
+    private init() {}
     
     public var signInURL: URL? {
         let base = "https://accounts.spotify.com/authorize"
@@ -92,6 +96,8 @@ final class AuthManager {
                 completion(false)
                 return
             }
+
+           
             do {
                 let result = try JSONDecoder().decode(AuthResponse.self, from: data)
               self?.cacheToken(result: result)
@@ -120,8 +126,10 @@ final class AuthManager {
         }
         if shouldRefreshToken {
             refreshIfNeeded { [weak self] success in
-                if let token = self?.accessToken, success {
-                    completion(token)
+                if success {
+                    if let token = self?.accessToken, success {
+                        completion(token)
+                    }
                 }
             }
         } else if let token = accessToken{
