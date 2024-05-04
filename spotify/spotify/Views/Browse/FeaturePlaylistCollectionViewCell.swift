@@ -8,5 +8,5 @@
 import UIKit
 
 class FeaturePlaylistCollectionViewCell: UICollectionViewCell {
-    static let identifire = "FeaturePlaylistCollectionViewCell"
+    static let identifier = "FeaturePlaylistCollectionViewCell"
 }
