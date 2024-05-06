@@ -36,7 +36,7 @@ class RecommandedTrackCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-      //  contentView.backgroundColor = .secondarySystemBackground
+        contentView.backgroundColor = .secondarySystemBackground
         contentView.addSubview(albumCoverImageView)
         contentView.addSubview(trackNameLabel)
         contentView.addSubview(artistNameLabel)
