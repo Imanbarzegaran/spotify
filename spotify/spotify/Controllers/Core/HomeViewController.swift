@@ -11,6 +11,18 @@ enum BrowseSectionType {
     case newReleases(viewModels: [NewReleasesCellViewModel])  //1
     case featuredPlaylists(viewModels: [FeaturedPlaylistCellViewModel])  //2
     case recommandedTracks(viewModels: [RecommandedTrackCellViewModel])  //3
+    
+    
+    var title: String {
+        switch self {
+        case .newReleases:
+            return "New Released Albums"
+        case .featuredPlaylists:
+            return "Featured Playlists"
+        case .recommandedTracks:
+            return "Recommended"
+        }
+    }
 }
 
 class HomeViewController: UIViewController  {
@@ -64,6 +76,10 @@ class HomeViewController: UIViewController  {
                                 , forCellWithReuseIdentifier: FeaturePlaylistCollectionViewCell.identifier)
         collectionView.register(RecommandedTrackCollectionViewCell.self
                                 , forCellWithReuseIdentifier: RecommandedTrackCollectionViewCell.identifier)
+        collectionView.register(
+            TitleHeaderCollectionReusableView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: TitleHeaderCollectionReusableView.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
@@ -94,7 +110,32 @@ class HomeViewController: UIViewController  {
         
     }
     
-    private static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+       guard let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: TitleHeaderCollectionReusableView.identifier,
+            for: indexPath
+       ) as? TitleHeaderCollectionReusableView, kind == UICollectionView.elementKindSectionHeader else {
+            return UICollectionReusableView()
+        }
+        let section = indexPath.section
+        let title = sections[section].title
+        header.configure(with: title)
+        return header
+    }
+    
+    static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
+        
+        let supplementaryViews = [
+        NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .absolute(50)
+            ),
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top)
+        ]
+        
         switch section {
         case 0:
             //Item
@@ -123,7 +164,9 @@ class HomeViewController: UIViewController  {
             //Section
             let section = NSCollectionLayoutSection(group: horizontalGroup)
             section.orthogonalScrollingBehavior = .groupPaging
+            section.boundarySupplementaryItems = supplementaryViews
             return section
+            
         case 1:
             //Item
             let item = NSCollectionLayoutItem(
@@ -152,6 +195,8 @@ class HomeViewController: UIViewController  {
             //Section
             let section = NSCollectionLayoutSection(group: horizontalGroup)
             section.orthogonalScrollingBehavior = .continuous
+            section.boundarySupplementaryItems = supplementaryViews
+
             return section
         case 2:
             //Item
@@ -171,6 +216,8 @@ class HomeViewController: UIViewController  {
                 count: 1)
             
             let section = NSCollectionLayoutSection(group: group)
+            section.boundarySupplementaryItems = supplementaryViews
+
             return section
         default:
             //Item
@@ -189,6 +236,8 @@ class HomeViewController: UIViewController  {
                 subitem: item,
                 count: 1)
             let section = NSCollectionLayoutSection(group: group)
+            section.boundarySupplementaryItems = supplementaryViews
+
             return section
         }
     }
