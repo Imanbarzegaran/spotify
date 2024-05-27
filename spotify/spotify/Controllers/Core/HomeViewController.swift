@@ -105,6 +105,8 @@ class HomeViewController: UIViewController  {
             navigationController?.pushViewController(vc, animated: true)
             break
         case .recommandedTracks:
+            let track = tracks[indexPath.row]
+            PlaybackPresenter.startPlayback(from: self, track: track)
             break
         }
         
