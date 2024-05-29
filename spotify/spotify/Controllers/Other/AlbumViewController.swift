@@ -142,7 +142,7 @@ class AlbumViewController: UIViewController {
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             collectionView.deselectItem(at: indexPath, animated: true)
             let track = tracks[indexPath.row]
-            PlaybackPresenter.shared.startPlayback(from: self, track: track)
+            PlaybackPresenter.startPlayback(from: self, track: track)
             
         }
     }
@@ -150,6 +150,6 @@ class AlbumViewController: UIViewController {
     extension AlbumViewController: PlaylistHeaderCollectionReusableViewDelegate {
         func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
         
-            PlaybackPresenter.shared.startPlayback(from: self, tracks: tracks)
+            PlaybackPresenter.startPlayback(from: self, tracks: tracks)
         }
     }

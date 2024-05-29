@@ -106,7 +106,7 @@ class HomeViewController: UIViewController  {
             break
         case .recommandedTracks:
             let track = tracks[indexPath.row]
-            PlaybackPresenter.shared.startPlayback(from: self, track: track)
+            PlaybackPresenter.startPlayback(from: self, track: track)
             break
         }
         
