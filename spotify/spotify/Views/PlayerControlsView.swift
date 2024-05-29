@@ -14,7 +14,14 @@ protocol PlayerControlsViewDelegate: AnyObject {
     func playerControlsViewDidTapBackwardButton(_ playerControlsView: PlayerControlsView)
 }
 
+struct PlayerControlsViewViewModel {
+    let title: String?
+    let subtitle: String?
+}
+
 final class PlayerControlsView: UIView {
+    
+    private var isPlaying = true
     
     weak var delegate: PlayerControlsViewDelegate?
     
@@ -95,7 +102,14 @@ final class PlayerControlsView: UIView {
     }
     
     @objc private func didTapPlayPause() {
+        self.isPlaying = !isPlaying
         delegate?.playerControlsViewDidTapPlayPauseButton(self)
+        
+        // update icon
+        let pause = UIImage(systemName: "pause", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34, weight: .regular))
+        let play = UIImage(systemName: "play.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34, weight: .regular))
+        playPauseButton.setImage(isPlaying ? pause : play , for: .normal)
+        
     }
     
     override func layoutSubviews() {
@@ -111,5 +125,10 @@ final class PlayerControlsView: UIView {
         backButton.frame = CGRect(x: playPauseButton.left-100, y: playPauseButton.top, width: buttonSize, height: buttonSize)
         nextButton.frame = CGRect(x: playPauseButton.left+100, y: playPauseButton.top, width: buttonSize, height: buttonSize)
         
+    }
+    
+    func configure(with viewModel: PlayerControlsViewViewModel) {
+        nameLabel.text = viewModel.title
+        subtitleLabel.text = viewModel.subtitle
     }
 }
